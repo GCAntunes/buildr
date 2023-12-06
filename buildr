@@ -1,0 +1,17 @@
+# ./buildr
+#!/bin/bash
+
+export PARENT_PATH=$(cd "$(dirname "$0")"; pwd)
+. $PARENT_PATH/lib/new/new.sh
+
+case $1 in
+  new)
+    shift
+    execute_new_command $@
+	  ;;
+  *)
+    echo "Error: Comando não reconhecido."
+	  exit 1
+	;;
+esac
+	

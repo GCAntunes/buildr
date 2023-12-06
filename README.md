@@ -1,4 +1,4 @@
-# buildr README.md
+# buildr
 
 ## Aviso
 
@@ -10,11 +10,11 @@ Fiz algumas modificações pensando em um projeto Python e para funcionar no set
 
 buildr é um script que construi para agilizar meu fluxo de trabalho quando iniciando um novo projeto. Ele cria um pasta com a estrutura de diretórios básicas, adicionar os arquivos .gitignore e README.md e instala as seguintes bibliotecas utilizando o Poetry:
 
-ruff
-mkdocs
-mkdocstrings-python
-mkdocs-material
-pytest
+- ruff
+- mkdocs
+- mkdocstrings-python
+- mkdocs-material
+- pytest
 
 ## Instalação
 
@@ -30,8 +30,13 @@ Na sequência execute o arquivo de instalação
 ./config/install.sh
 ```
 
-Por fim, pode remover os arquivos
+Remova os arquivos
 ```bash
 cd ..
 rm -rf buildr/
+```
+
+Ative o zsh para finalizar a instalação
+```bash
+exec zsh
 ```

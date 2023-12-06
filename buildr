@@ -9,6 +9,9 @@ case $1 in
     shift
     execute_new_command $@
 	  ;;
+  version)
+    echo "buildr 0.1.0"
+    ;;  
   *)
     echo "Error: Comando não reconhecido."
 	  exit 1

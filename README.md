@@ -29,3 +29,9 @@ Na sequência execute o arquivo de instalação
 ```bash
 ./config/install.sh
 ```
+
+Por fim, pode remover os arquivos
+```bash
+cd ..
+rm -rf buildr/
+```

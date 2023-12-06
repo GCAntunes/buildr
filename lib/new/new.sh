@@ -12,7 +12,6 @@ execute_new_command() {
     create_gitignore_file
     create_readme_file $1
     run_poetry
-    write_pre_commit_file
     run_git
     exit
   fi
@@ -40,6 +39,14 @@ run_poetry() {
   poetry run pre-commit install
 }
 
+create_git_env() {
+  git init -q
+  poetry run pre-commit install
+  write_pre_commit_file
+  git add . 
+  git commit -m 'Commit inicial automatizado por buildr' -q
+}
+
 write_pre_commit_file() {    
   echo "- repo: https://github.com/astral-sh/ruff-pre-commit
   # Ruff version.
@@ -52,8 +59,3 @@ write_pre_commit_file() {
     - id: ruff-format" >> .pre-commit-config.yaml
 }
 
-run_git() {
-  git init -q
-  git add . 
-  git commit -m 'Commit inicial automatizado por buildr' -q
-}

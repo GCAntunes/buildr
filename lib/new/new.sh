@@ -13,6 +13,9 @@ execute_new_command() {
     create_readme_file $1
     poetry init -n
     poetry add ruff mkdocs mkdocs-material mkdocstrings-python pytest
+    git init
+    git add .
+    git commit -m 'Commit inicial automatizado por buildr'
     exit
   fi
 }

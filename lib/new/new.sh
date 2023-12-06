@@ -47,14 +47,12 @@ create_git_env() {
 }
 
 write_pre_commit_file() {    
-  echo "- repo: https://github.com/astral-sh/ruff-pre-commit
-  # Ruff version.
+  echo "repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
   rev: v0.1.7
   hooks:
-    # Run the linter.
     - id: ruff
       args: [ --fix ]
-    # Run the formatter.
-    - id: ruff-format" >> .pre-commit-config.yaml
+    - id: ruff-format" >> .pre-commit-config.yaml" >> .pre-commit-config.yaml
 }
 

@@ -11,12 +11,9 @@ execute_new_command() {
     cd $1
     create_gitignore_file
     create_readme_file $1
-    poetry init -n -q
-    poetry add ruff mkdocs mkdocs-material mkdocstrings-python pytest -q
-    poetry run mkdocs new . -q
-    git init -q
-    git add . 
-    git commit -m 'Commit inicial automatizado por buildr' -q
+    run_poetry
+    write_pre_commit_file
+    run_git
     exit
   fi
 }
@@ -24,15 +21,39 @@ execute_new_command() {
 create_base_directories() {
   mkdir $1
   mkdir $1/docs $1/tests $1/$1
-
 }
 
 create_gitignore_file() {
-    curl -o .gitignore -sS https://www.toptal.com/developers/gitignore/api/python
+  curl -o .gitignore -sS https://www.toptal.com/developers/gitignore/api/python
 }
 
 create_readme_file() {
-    touch README.md
-    printf "%s\n" "# $1 README" "" "Gerado por buildr." \
+  touch README.md
+  printf "%s\n" "# $1 README" "" "Gerado por buildr." \
                 "Em desenvolvimento." > README.md
+}
+
+run_poetry() {
+  poetry init -n -q
+  poetry add ruff mkdocs mkdocs-material mkdocstrings-python pytest pre-commit -q
+  poetry run mkdocs new . -q
+  poetry run pre-commit install
+}
+
+write_pre_commit_file() {    
+  echo "- repo: https://github.com/astral-sh/ruff-pre-commit
+  # Ruff version.
+  rev: v0.1.7
+  hooks:
+    # Run the linter.
+    - id: ruff
+      args: [ --fix ]
+    # Run the formatter.
+    - id: ruff-format" >> .pre-commit-config.yaml
+}
+
+run_git() {
+  git init -q
+  git add . 
+  git commit -m 'Commit inicial automatizado por buildr' -q
 }

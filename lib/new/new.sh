@@ -12,7 +12,7 @@ execute_new_command() {
     create_gitignore_file
     create_readme_file $1
     run_poetry
-    run_git
+    create_git_env
     exit
   fi
 }
@@ -36,7 +36,6 @@ run_poetry() {
   poetry init -n -q
   poetry add ruff mkdocs mkdocs-material mkdocstrings-python pytest pre-commit -q
   poetry run mkdocs new . -q
-  poetry run pre-commit install
 }
 
 create_git_env() {

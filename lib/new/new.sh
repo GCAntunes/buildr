@@ -12,11 +12,11 @@ execute_new_command() {
     create_gitignore_file
     create_readme_file $1
     poetry init -n -q
-    poetry add ruff mkdocs mkdocs-material mkdocstrings-python pytest
+    poetry add ruff mkdocs mkdocs-material mkdocstrings-python pytest -q
     poetry run mkdocs new . -q
-    git init
-    git add .
-    git commit -m 'Commit inicial automatizado por buildr'
+    git init -q
+    git add . 
+    git commit -m 'Commit inicial automatizado por buildr' -q
     exit
   fi
 }

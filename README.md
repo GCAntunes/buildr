@@ -45,3 +45,10 @@ Ative o zsh para finalizar a instalação
 ```bash
 exec zsh
 ```
+
+## Utilização
+
+Para criar sua nova pasta de projeto basta digitar o comando buildr new seguido do nome do projeto.
+```bash
+buildr new novo_projeto
+```

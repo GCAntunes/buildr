@@ -9,6 +9,7 @@ Fiz algumas modificações pensando em um projeto Python e para funcionar no set
 ## Pré-requisitos
 
 Utilizar o shell [zsh](https://www.zsh.org/)
+
 Ter o [Poetry](https://python-poetry.org/) instalado
 
 ## Introdução

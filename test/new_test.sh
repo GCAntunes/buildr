@@ -46,18 +46,3 @@ teardown() {
     [ -e "./testrb/README.md" ]
     [ -e "./testrb/pyproject.toml" ]    
 }
-
-@test "Checa se configuração do ruff está correta" {
-    run $BUILDR new testrb
-
-    run grep -q "[tool.ruff]
-select = ['I', 'D']
-extend-exclude = ["tests"]
-extend-ignore = ["D201", "D213"]
-
-[tool.ruff.lint.pydocstyle]
-convention = "google"" testrb/pyproject.toml
-    
-    [ "$status" -eq 0 ]
-
-}

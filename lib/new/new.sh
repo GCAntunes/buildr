@@ -12,6 +12,7 @@ execute_new_command() {
     create_gitignore_file
     create_readme_file $1
     run_poetry
+    config_ruff
     create_git_env
     exit
   fi
@@ -42,11 +43,11 @@ config_ruff() {
   echo "\n" >> pyproject.toml
   echo "[tool.ruff]
 select = ['I', 'D']
-extend-exclude = ["tests"]
-extend-ignore = ["D201", "D213"]
+extend-exclude = [\"tests\"]
+extend-ignore = [\"D201\", \"D213\"]
 
 [tool.ruff.lint.pydocstyle]
-convention = "google"" >> pyproject.toml
+convention = \"google\"" >> pyproject.toml
 
 }
 

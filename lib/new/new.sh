@@ -38,6 +38,18 @@ run_poetry() {
   poetry run mkdocs new . -q
 }
 
+config_ruff() {
+  echo "\n" >> pyproject.toml
+  echo "[tool.ruff]
+select = ['I', 'D']
+extend-exclude = ["tests"]
+extend-ignore = ["D201", "D213"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"" >> pyproject.toml
+
+}
+
 create_git_env() {
   git init -q
   poetry run pre-commit install
